@@ -55,8 +55,17 @@ class Play extends Phaser.Scene {
         });
         this.time.delayedCall(10000, () => {
             this.addWhale();
+          
         });
 
+        this.itemGroup = this.add.group({
+            runChildUpdate: true
+        });     
+        this.time.delayedCall(5000, () => {
+
+            this.addItem();
+          
+        });
         // display time
         this.passTimer = this.time.addEvent({
             delay: 1000,
@@ -90,6 +99,10 @@ class Play extends Phaser.Scene {
         let whales = new Whale(this, this.whaleSpeed - whaleMoveSpeed);
         this.whaleGroup.add(whales);
     }
+   addItem() {
+    let items = new Item(this, game.config.width/2,  Phaser.Math.Between(128/2, game.config.height - 128/2));   
+    this.itemGroup.add(items);
+   }
 
     update(time, delta) {
         let deltaMultiplier = (delta/16);
