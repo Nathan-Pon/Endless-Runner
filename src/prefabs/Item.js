@@ -16,6 +16,7 @@ class Item extends Phaser.Physics.Arcade.Sprite {
          scene.physics.add.existing(this);
          this.setOffset(32, -8);
          this.setVelocityX(-velocity);
+         this.setImmovable();
          this.newItem = true;
     
          if(this.x < -this.width) {
